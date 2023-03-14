@@ -31,7 +31,7 @@ function App() {
   };
 
   const handleChange = (ev) => {
-    let re = /^[a-zA-ZñÑá-úÁ-Ú´]$/; //add regular pattern 
+    let re = /^[a-zA-ZñÑá-úÁ-Ú´]$/; //add regular pattern
     if (re.test(ev.target.value) || ev.target.value === '') {
       handleLastLetter(ev.target.value);
     }
@@ -53,7 +53,7 @@ function App() {
     return wordLetters.map((letter, index) => {
       const exists = userLetters.includes(letter.toLocaleLowerCase());
       return (
-        <li key={index} className='letter'>
+        <li key={index} className="letter">
           {exists ? letter : ''}
         </li>
       );
@@ -67,7 +67,7 @@ function App() {
     );
     return errorLetters.map((letter, index) => {
       return (
-        <li key={index} className='letter'>
+        <li key={index} className="letter">
           {letter}
         </li>
       );
@@ -85,37 +85,41 @@ function App() {
   };
 
   return (
-    <div className='page'>
+    <div className="page">
       <Header></Header>
-      <main className='main'>
+      <main className="main">
         <section>
-          <div className='solution'>
-            <h2 className='title'>Solución:</h2>
-            <ul className='letters'>{renderSolutionLetters()}</ul>
+          <div className="solution">
+            <h2 className="title">Solución:</h2>
+            <ul className="letters">{renderSolutionLetters()}</ul>
           </div>
-          <div className='error'>
-            <h2 className='title'>Letras falladas:</h2>
-            <ul className='letters'>{renderErrorLetters()}</ul>
+          <div className="error">
+            <h2 className="title">Letras falladas:</h2>
+            <ul className="letters">{renderErrorLetters()}</ul>
           </div>
-          <form className='form' onSubmit={handleSubmit}>
-            <label className='title' htmlFor='last-letter'>
+          <form className="form" onSubmit={handleSubmit}>
+            <label className="title" htmlFor="last-letter">
               Escribe una letra:
             </label>
             <input
               autoFocus
-              autoComplete='off'
-              className='form__input'
-              maxLength='1'
-              type='text'
-              name='last-letter'
-              id='last-letter'
+              autoComplete="off"
+              className="form__input"
+              maxLength="1"
+              type="text"
+              name="last-letter"
+              id="last-letter"
               value={lastLetter}
               onKeyDown={handleKeyDown}
               onChange={handleChange}
             />
           </form>
         </section>
-        <SectionDummy className={`dummy error-${getNumberOfErrors()}`}></SectionDummy>
+        <SectionDummy
+          className={`dummy error-${getNumberOfErrors()}`}
+        ></SectionDummy>
+
+        {/* <SectionDummy number={getNumberOfErrors()}></SectionDummy> -->como en el componente le pasamos el parametro number, aqui debemos pasarle el number con la funcion getNumberOFErrors*/}
       </main>
     </div>
   );
