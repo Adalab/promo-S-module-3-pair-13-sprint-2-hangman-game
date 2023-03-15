@@ -11,6 +11,8 @@ import '../styles/Header.scss';
 
 import Header from '../components/Header';
 import SectionDummy from '../components/Dummy';
+import SolutionLetters from '../components/SolutionLetters';
+import ErrorLetters from './ErrorLetters';
 
 function App() {
   const [word, setWord] = useState('');
@@ -48,32 +50,6 @@ function App() {
     return errorLetters.length;
   };
 
-  const renderSolutionLetters = () => {
-    const wordLetters = word.split('');
-    return wordLetters.map((letter, index) => {
-      const exists = userLetters.includes(letter.toLocaleLowerCase());
-      return (
-        <li key={index} className="letter">
-          {exists ? letter : ''}
-        </li>
-      );
-    });
-  };
-
-  const renderErrorLetters = () => {
-    const errorLetters = userLetters.filter(
-      (letter) =>
-        word.toLocaleLowerCase().includes(letter.toLocaleLowerCase()) === false
-    );
-    return errorLetters.map((letter, index) => {
-      return (
-        <li key={index} className="letter">
-          {letter}
-        </li>
-      );
-    });
-  };
-
   const handleLastLetter = (value) => {
     value = value.toLocaleLowerCase();
     setLastLetter(value);
@@ -89,14 +65,11 @@ function App() {
       <Header></Header>
       <main className="main">
         <section>
-          <div className="solution">
-            <h2 className="title">Solución:</h2>
-            <ul className="letters">{renderSolutionLetters()}</ul>
-          </div>
-          <div className="error">
-            <h2 className="title">Letras falladas:</h2>
-            <ul className="letters">{renderErrorLetters()}</ul>
-          </div>
+          <SolutionLetters
+            word={word}
+            userLetters={userLetters}
+          ></SolutionLetters>
+          <ErrorLetters word={word} userLetters={userLetters}></ErrorLetters>
           <form className="form" onSubmit={handleSubmit}>
             <label className="title" htmlFor="last-letter">
               Escribe una letra:
@@ -115,11 +88,8 @@ function App() {
             />
           </form>
         </section>
-        <SectionDummy
-          className={`dummy error-${getNumberOfErrors()}`}
-        ></SectionDummy>
 
-        {/* <SectionDummy number={getNumberOfErrors()}></SectionDummy> -->como en el componente le pasamos el parametro number, aqui debemos pasarle el number con la funcion getNumberOFErrors*/}
+        <SectionDummy number={getNumberOfErrors()}></SectionDummy>
       </main>
     </div>
   );
