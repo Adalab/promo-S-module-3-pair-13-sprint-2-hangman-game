@@ -9,9 +9,9 @@ import '../styles/Letters.scss';
 import '../styles/Form.scss';
 import '../styles/Header.scss';
 
-import Header from '../components/Header';
-import SectionDummy from '../components/Dummy';
-import SolutionLetters from '../components/SolutionLetters';
+import Header from './Header';
+import SectionDummy from './Dummy';
+import SolutionLetters from './SolutionLetters';
 import ErrorLetters from './ErrorLetters';
 
 function App() {
