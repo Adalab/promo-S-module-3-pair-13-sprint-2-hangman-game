@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import {Route, Routes} from 'react-router-dom';
 // api
 import getWordFromApi from '../services/api';
 // styles
@@ -13,6 +13,9 @@ import Header from './Header';
 import SectionDummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
 import ErrorLetters from './ErrorLetters';
+import Footer from './Footer';
+import Instructions from './Instructions';
+import Options from './Options';
 
 function App() {
   const [word, setWord] = useState('');
@@ -90,7 +93,13 @@ function App() {
         </section>
 
         <SectionDummy number={getNumberOfErrors()}></SectionDummy>
+        <Routes>
+          <Route path='/' element={<div></div>}/>
+          <Route path='/intructions' element={<Instructions/>}></Route>
+        </Routes>
       </main>
+      <Footer>
+      </Footer>
     </div>
   );
 }
