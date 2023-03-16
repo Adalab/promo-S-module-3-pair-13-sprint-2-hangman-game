@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 // api
 import getWordFromApi from '../services/api';
 // styles
@@ -94,12 +94,11 @@ function App() {
 
         <SectionDummy number={getNumberOfErrors()}></SectionDummy>
         <Routes>
-          <Route path='/' element={<div></div>}/>
-          <Route path='/intructions' element={<Instructions/>}></Route>
+          <Route path="/" element={<div></div>}></Route>
+          <Route path="/intructions" element={<Instructions />}></Route>
         </Routes>
       </main>
-      <Footer>
-      </Footer>
+      <Footer></Footer>
     </div>
   );
 }
