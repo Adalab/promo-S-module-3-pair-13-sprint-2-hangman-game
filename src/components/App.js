@@ -95,7 +95,7 @@ function App() {
         <SectionDummy number={getNumberOfErrors()}></SectionDummy>
         <Routes>
           <Route path="/" element={<div></div>}></Route>
-          <Route path="/intructions" element={<Instructions />}></Route>
+          <Route path="/instructions" element={<Instructions />}></Route>
         </Routes>
       </main>
       <Footer></Footer>

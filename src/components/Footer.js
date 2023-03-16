@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import '../styles/Footer.scss';
 
-// routes with NavLink to  : className={({ isActive}) => isActive ? "footer__menu-link active" : "footer__menu-link"}
+// routes with NavLink to  :
+//<NavLink to='/' className={({ isActive}) => isActive ? "footer__menu-link active" : "footer__menu-link"}>A jugar</NavLink>
+
+// className={({ isActive}) => isActive ? "footer__menu-link active" : "footer__menu-link"}
 
 const Footer = () => {
   return (
@@ -14,7 +17,12 @@ const Footer = () => {
             </NavLink>
           </li>
           <li className="footer__menu-item">
-            <NavLink to="/instructions" className="footer__menu-link active">
+            <NavLink
+              to="/instructions"
+              className={({ isActive }) =>
+                isActive ? 'footer__menu-link active' : 'footer__menu-link'
+              }
+            >
               ¿Cómo se juega?
             </NavLink>
           </li>
